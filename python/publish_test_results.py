@@ -119,6 +119,7 @@ def parse_files_as_xml(files: Iterable[str], large_files: bool, drop_testcases: 
     unknown_files = []
 
     def parse(path: str) -> JUnitTree:
+        logger.info(f'Path: {path}')
         if is_junit(path):
             junit_files.append(path)
             return parse_junit_xml_file(path, large_files, drop_testcases)
@@ -135,6 +136,7 @@ def parse_files_as_xml(files: Iterable[str], large_files: bool, drop_testcases: 
 
         from publish.trx import is_trx, parse_trx_file
         if is_trx(path):
+            logger.info(f'ix trx')
             trx_files.append(path)
             return parse_trx_file(path, large_files)
 
