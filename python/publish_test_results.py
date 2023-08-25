@@ -243,9 +243,10 @@ def main(settings: Settings, gha: GithubAction) -> None:
     log_parse_errors(parsed.errors, gha)
 
     import os 
-    dir_path = os.path.dirname(os.path.realpath(__file__))
+    dir_path = os.getcwd()
     logger.info(f'dir_path {dir_path}')
-
+    for item in os.listdir(dir_path):
+        print(item)
 
     # process the parsed results
     results = get_test_results(parsed, settings.dedup_classes_by_file_name)
