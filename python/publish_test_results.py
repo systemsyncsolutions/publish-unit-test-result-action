@@ -136,7 +136,7 @@ def parse_files_as_xml(files: Iterable[str], large_files: bool, drop_testcases: 
 
         from publish.trx import is_trx, parse_trx_file
         if is_trx(path):
-            logger.info(f'ix trx')
+            logger.info(f'is trx')
             trx_files.append(path)
             return parse_trx_file(path, large_files)
 
@@ -241,6 +241,11 @@ def main(settings: Settings, gha: GithubAction) -> None:
     # get the unit test results
     parsed = parse_files(settings, gha)
     log_parse_errors(parsed.errors, gha)
+
+    import os 
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    logger.info(f'dir_path {dir_path}')
+
 
     # process the parsed results
     results = get_test_results(parsed, settings.dedup_classes_by_file_name)
