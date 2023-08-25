@@ -186,13 +186,13 @@ runs:
         esac
       shell: bash
 
-    # - name: Restore PIP packages cache
-    #   uses: actions/cache/restore@v3
-    #   id: cache
-    #   continue-on-error: true
-    #   with:
-    #     path: ${{ steps.os.outputs.pip-cache }}
-    #     key: enricomi-publish-action-${{ runner.os }}-${{ runner.arch }}-pip-${{ steps.python.outputs.version }}-d81e5b217e041ea3f958821f6daca2f5
+    - name: Restore PIP packages cache
+      uses: actions/cache/restore@v3
+      id: cache
+      continue-on-error: true
+      with:
+        path: ${{ steps.os.outputs.pip-cache }}
+        key: enricomi-publish-action-${{ runner.os }}-${{ runner.arch }}-pip-${{ steps.python.outputs.version }}-d81e5b217e041ea3f958821f6daca2f5
 
     - name: Install Python dependencies
       run: |
