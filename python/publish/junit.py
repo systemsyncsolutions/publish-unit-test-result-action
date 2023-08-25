@@ -138,6 +138,7 @@ ParsedJUnitFile = Tuple[str, JUnitTreeOrParseError]
 
 def safe_parse_xml_file(path: str, parse: Callable[[str], JUnitTree]) -> JUnitTreeOrParseError:
     """Parses an xml file and returns either a JUnitTree or a ParseError."""
+    logger.info(f'Parsing {path}...')
     if not os.path.exists(path):
         return ParseError.from_exception(path, FileNotFoundError(f'File does not exist.'))
     if os.stat(path).st_size == 0:
