@@ -246,7 +246,7 @@ def main(settings: Settings, gha: GithubAction) -> None:
     dir_path = os.getcwd()
     logger.info(f'dir_path {dir_path}')
     for item in os.listdir(dir_path):
-        print(item)
+         logger.info(item)
 
     # process the parsed results
     results = get_test_results(parsed, settings.dedup_classes_by_file_name)
