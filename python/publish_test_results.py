@@ -245,7 +245,8 @@ def main(settings: Settings, gha: GithubAction) -> None:
     import os 
     dir_path = os.getcwd()
     logger.info(f'dir_path {dir_path}')
-    for item in os.listdir(dir_path):
+    resultsPath = f'{dir_path}/TestResults'
+    for item in os.listdir(resultsPath):
          logger.info(item)
 
     # process the parsed results
